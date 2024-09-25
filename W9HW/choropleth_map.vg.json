@@ -1,0 +1,38 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Electricity Consumption by State",
+    "width": 800,
+    "height": 400,
+    "projection": {"type": "equalEarth"},
+    "data": {
+      "url": "path_to_your_topojson_file",  // Replace with the local path or URL to the TopoJSON file for Australian states
+      "format": {"type": "topojson", "feature": "states"}  // Ensure the feature matches your TopoJSON structure
+    },
+    "transform": [
+      {
+        "lookup": "properties.NAME",  // Ensure this matches the state name in the TopoJSON file
+        "from": {
+          "data": {
+            "url": "path_to_your_CSV_file",  // Replace with the path to your CSV file (after converting your Excel to CSV)
+            "format": {"type": "csv"}
+          },
+          "key": "State",  // Ensure this matches the column for state names in your dataset
+          "fields": ["Income"]  // Replace with the column that represents electricity consumption or income in your dataset
+        }
+      },
+      {"calculate": "datum.Income + 0.1", "as": "Electricity Consumption"}  // Adjust the field used here
+    ],
+    "mark": {"type": "geoshape"},
+    "encoding": {
+      "color": {
+        "field": "Electricity Consumption",
+        "type": "quantitative",
+        "scale": {"type": "log"},
+        "title": "Electricity Consumption"
+      },
+      "tooltip": [
+        {"field": "properties.NAME", "type": "nominal", "title": "State"},
+        {"field": "Income", "type": "quantitative", "title": "Electricity Consumption"}  // Adjust the field as necessary
+      ]
+    }
+  }
