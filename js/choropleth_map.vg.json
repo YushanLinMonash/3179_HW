@@ -10,7 +10,7 @@
   },
   "transform": [
     {
-      "lookup": "properties.NAME",  // This should match "NAME" from TopoJSON
+      "lookup": "properties.NAME",  
       "from": {
         "data": {
           "url": "https://raw.githubusercontent.com/YushanLinMonash/3179_W9HW/refs/heads/main/data/Electricity_sub_state.csv",
