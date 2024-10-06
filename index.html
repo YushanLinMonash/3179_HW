@@ -8,19 +8,21 @@
   
   <!-- CSS file -->
   <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
-
-
 </head>
 <body>
   
-<div id="choropleth_map"></div>
+<div id="bubble_chart"></div>
 
 <script type="text/javascript">
 
-  var spec2 = "js/choropleth_map.vg.json";
-  vegaEmbed('#choropleth_map', spec2).then(function(result) {
-    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  // Link to your Vega-Lite JSON file on GitHub
+  var spec2 = "https://raw.githubusercontent.com/YushanLinMonash/3179_HW/main/W10HW/W10HW_js.json";
+  
+  // Embed the Vega-Lite visualization using vegaEmbed
+  vegaEmbed('#bubble_chart', spec2).then(function(result) {
+    // Access the Vega view instance as result.view
   }).catch(console.error);
+
 </script>
 
 </body>
